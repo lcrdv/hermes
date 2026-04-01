@@ -34,13 +34,13 @@ public final class FileSource extends ConfigurableSource<FileSource> {
   @Override
   public Either<ConfigError, ConfigNode> loadConfig(SourceParsers parser) {
     if (!Files.exists(path)) {
-      return isOptional ? Either.right(NullNode.create()) : Either.left(null);
+      return isOptional ? Either.right(NullNode.create()) : Either.left(new ConfigError.UnknownFile(path));
     }
 
     try (Reader reader = Files.newBufferedReader(path)) {
       return parser.parse(reader, format());
     } catch (IOException exception) {
-      return Either.left(null);
+      return Either.left(new ConfigError.SourceLoadingError(path.toString()));
     }
   }
 

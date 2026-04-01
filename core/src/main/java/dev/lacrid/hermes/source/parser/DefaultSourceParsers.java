@@ -6,7 +6,6 @@ import dev.lacrid.hermes.serialization.serializer.Serializers;
 import dev.lacrid.hermes.type.ValueType;
 import dev.lacrid.lambda.Either;
 
-import java.io.InputStream;
 import java.io.Reader;
 import java.util.Comparator;
 import java.util.List;
@@ -28,7 +27,7 @@ public class DefaultSourceParsers implements SourceParsers {
         return parser.parse(reader, format);
       }
     }
-    return Either.left(null);
+    return Either.left(new ConfigError.UnknownFormat(format.format()));
   }
 
   @Override

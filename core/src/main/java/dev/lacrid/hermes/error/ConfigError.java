@@ -4,6 +4,7 @@ import dev.lacrid.hermes.node.*;
 import dev.lacrid.hermes.node.path.NodeKey;
 import dev.lacrid.hermes.type.ValueType;
 
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -317,6 +318,27 @@ public interface ConfigError {
     @Override
     public String message() {
       return "failed to write config:" + System.lineSeparator() + formatErrors(errors);
+    }
+  }
+
+  record UnknownFile(Path path) implements ConfigError {
+    @Override
+    public String message() {
+      return "no file found %s".formatted(path);
+    }
+  }
+
+  record SourceLoadingError(String id) implements ConfigError {
+    @Override
+    public String message() {
+      return "failed to load source %s".formatted(id != null ? id : "");
+    }
+  }
+
+  record UnknownFormat(String format) implements ConfigError {
+    @Override
+    public String message() {
+      return "unknown source format %s".formatted(format);
     }
   }
 
