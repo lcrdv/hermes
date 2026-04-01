@@ -23,7 +23,7 @@ Maven:
 <dependency>
   <groupId>dev.lacrid</groupId>
   <artifactId>hermes-core</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
 </dependency>
 ```
 
@@ -31,7 +31,7 @@ Gradle:
 ```groovy
 maven("https://maven.lacrid.dev/releases")
 
-implementation("dev.lacrid:hermes-core:0.1.0")
+implementation("dev.lacrid:hermes-core:0.1.1")
 ```
 
 ### Loading simple configuration
@@ -105,7 +105,7 @@ Add the module to your dependencies:
     <groupId>dev.lacrid</groupId>
     <!-- replace 'module' with the actual module name -->
     <artifactId>hermes-module</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
 </dependency>
 ```
 
