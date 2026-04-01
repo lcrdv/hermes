@@ -57,7 +57,7 @@ SampleConfig config = hermes.load(SampleConfig.class);
 
 ### Binding complex configuration
 **`config.yaml`**
-```properties 
+```yaml 
 database:
   hostname: localhost
   port: 6379
