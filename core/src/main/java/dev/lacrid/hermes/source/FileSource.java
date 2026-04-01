@@ -32,6 +32,17 @@ public final class FileSource extends ConfigurableSource<FileSource> {
   }
 
   @Override
+  protected String baseExtension() {
+    String file = path.getFileName().toString();
+    int dotIndex = file.lastIndexOf('.');
+    if (dotIndex == -1) {
+      return "";
+    }
+
+    return file.substring(dotIndex + 1);
+  }
+
+  @Override
   public Either<ConfigError, ConfigNode> loadConfig(SourceParsers parser) {
     if (!Files.exists(path)) {
       return isOptional ? Either.right(NullNode.create()) : Either.left(new ConfigError.UnknownFile(path));
